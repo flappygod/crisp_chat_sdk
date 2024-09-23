@@ -4,14 +4,14 @@ package crisp.chat.sdk.crisp_chat_sdk
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.util.Log
+import android.content.res.Configuration
+import android.os.Build
 import androidx.annotation.NonNull
 import im.crisp.client.ChatActivity
 import im.crisp.client.Crisp
 import im.crisp.client.data.Company
 import im.crisp.client.data.Employment
 import im.crisp.client.data.Geolocation
-import im.crisp.client.data.SessionEvent
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -20,7 +20,7 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import java.net.URL
-import kotlin.math.log
+import java.util.Locale
 
 
 class CrispChatSdkPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
@@ -110,6 +110,7 @@ class CrispChatSdkPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             Crisp.setSessionSegment(call.arguments.toString())
             result.success("Android Crisp sdk setSessionSegment successful");
         } else if (call.method == "setLanguage") {
+            setLocale(activity, call.arguments.toString())
             result.success("1")
         } else if (call.method == "openCrisp") {
             activity.startActivity(Intent(context, ChatActivity::class.java))
@@ -137,5 +138,18 @@ class CrispChatSdkPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
     override fun onDetachedFromActivity() {
 
+    }
+
+    fun setLocale(context: Context, languageCode: String?) {
+        val locale = Locale(languageCode)
+        Locale.setDefault(locale)
+        val resources = context.resources
+        val config: Configuration = resources.configuration
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            config.setLocale(locale)
+        } else {
+            config.locale = locale
+        }
+        resources.updateConfiguration(config, resources.displayMetrics)
     }
 }
