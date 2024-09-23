@@ -1,7 +1,9 @@
 PODS:
-  - Crisp (0.1.30)
+  - Crisp (2.5.5):
+    - Crisp/Crisp (= 2.5.5)
+  - Crisp/Crisp (2.5.5)
   - crisp_chat_sdk (0.0.1):
-    - Crisp
+    - Crisp (= 2.5.5)
     - Flutter
   - Flutter (1.0.0)
 
@@ -20,10 +22,10 @@ EXTERNAL SOURCES:
     :path: Flutter
 
 SPEC CHECKSUMS:
-  Crisp: 9885dbc560baa857109a489e4a292afb1901cf7f
-  crisp_chat_sdk: 95d8487c1888cbe11205d5ccaa6569f4f11f86d9
-  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
+  Crisp: dcf7d9e64be6614ceee71c5582f616212ed4a881
+  crisp_chat_sdk: 4aa2d6d00b92db93e6164639aae026d195599fc0
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
 
-PODFILE CHECKSUM: 02d221f1e7d9462bff20092f7b45d080159f4852
+PODFILE CHECKSUM: 378f54048866bda0092f1a4fe6650f2fbbf591d5
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.15.2
