@@ -110,7 +110,7 @@ class CrispChatSdkPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             Crisp.setSessionSegment(call.arguments.toString())
             result.success("Android Crisp sdk setSessionSegment successful");
         } else if (call.method == "setLanguage") {
-            setLocale(activity, call.arguments.toString())
+            ///setLocale(activity, call.arguments.toString())
             result.success("1")
         } else if (call.method == "openCrisp") {
             activity.startActivity(Intent(context, ChatActivity::class.java))
