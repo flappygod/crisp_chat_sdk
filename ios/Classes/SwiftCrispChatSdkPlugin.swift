@@ -50,9 +50,6 @@ public class SwiftCrispChatSdkPlugin: NSObject, FlutterPlugin {
         else if ("setSessionSegment" == call.method) {
             self.setSessionSegment(call: call, result: result)
         }
-        else if ("setLanguage" == call.method) {
-            self.setLanguage(call: call, result: result)
-        }
         else {
             result(FlutterMethodNotImplemented)
         }
@@ -156,12 +153,6 @@ public class SwiftCrispChatSdkPlugin: NSObject, FlutterPlugin {
         let args = call.arguments as! String
         CrispSDK.session.segment = args
         result(String("IOS Crisp sdk setSessionSegment successful"))
-    }
-    
-    private func setLanguage(call: FlutterMethodCall, result: FlutterResult) {
-        let languageCode = call.arguments as! String
-        CrispSDK.locale = Locale(identifier: languageCode)
-        result(String("1"))
     }
     
 }

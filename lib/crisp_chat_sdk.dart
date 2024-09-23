@@ -91,15 +91,6 @@ class CrispChatSdk {
     return status;
   }
 
-  /// Sets a session segment
-  Future<bool> setLanguage({
-    required String languageCode,
-  }) async {
-    final String? status =
-    await _channel.invokeMethod('setLanguage', languageCode);
-    return status == "1";
-  }
-
   /// Open chat view (this method open chat page)
   Future<String?> openChat() async {
     final String? status = await _channel.invokeMethod(
